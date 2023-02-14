@@ -1,10 +1,13 @@
-type Props = {};
+type Props = {
+  text: string;
+  backgroundColor: string;
+};
 
-const ActionButton = (props: Props) => {
+const ActionButton = ({ text, backgroundColor }: Props) => {
   return (
-    <div className="rounded-md border-2 ">
+    <div className={`rounded-md ${backgroundColor} border-2`}>
       <div className="flex justify-center ">
-        <button className="py-2 px-12">ActionButton</button>
+        <button className="py-2 px-12 font-semimedium">{text}</button>
       </div>
     </div>
   );
