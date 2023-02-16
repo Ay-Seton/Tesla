@@ -1,32 +1,72 @@
 import HText from "@/assets/shared/HText";
-import ActionButton from "@/assets/shared/ActionButton";
+import PrimaryActionButton from "@/assets/shared/PrimaryActionButton";
+import SecondaryActionButton from "@/assets/shared/SecondaryActionButton";
+import { motion } from "framer-motion";
 
 type Props = {
-  text: string;
-  backgroundColor: string;
+  SecondayText: string;
+  PrimaryText: string;
+  primaryVisible:string;
 };
 
-const Landing = ({ text, backgroundColor }: Props) => {
+const Landing = ({primaryVisible, SecondayText, PrimaryText }: Props) => {
   return (
-      <div className="fixed w-full flex justify-center">
-        <section className="flex justify-center h-screen top-20 mx-auto">
-          <div className="flex flex-col justify-between items-center my-auto h-5/6">
-            {/* HEADING TEXT  */}
-            <div>
-              <div className="flex justify-center mt-14">
+    <div className="fixed w-full flex justify-center">
+      <section className="flex justify-center h-screen top-20 mx-auto">
+        <div className="flex flex-col justify-between items-center my-auto h-5/6">
+          {/* HEADING TEXT  */}
+          <div>
+            <div className="flex justify-center mt-14">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 1.5, delay: 0.3 }}
+                variants={{
+                  hidden: { opacity: 0, y: -50 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+              >
                 <HText title="Model Y" />
-              </div>
-              <p></p>
+              </motion.div>
             </div>
-
-            {/* HOME BUTTONS  */}
-            <div className="md:flex justify-center gap-8">
-              <ActionButton text={text} backgroundColor={backgroundColor} />
-              <ActionButton text={text} backgroundColor={backgroundColor} />
-            </div>
+            <p></p>
           </div>
-        </section>
-      </div>
+
+          {/* HOME BUTTONS  */}
+          <div className="md:flex justify-center gap-8">
+            <motion.div
+              className="md:mt-0  mb-5"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }}
+              transition={{ duration: 1.5, delay: 0.3 }}
+              variants={{
+                hidden: { opacity: 0, x: -50 },
+                visible: { opacity: 1, x: 0 },
+              }}
+            >
+              <PrimaryActionButton
+                primaryVisible={primaryVisible}
+                text={PrimaryText}
+              />
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }}
+              transition={{ duration: 1.5, delay: 0.3 }}
+              variants={{
+                hidden: { opacity: 0, x: 50 },
+                visible: { opacity: 1, x: 0 },
+              }}
+            >
+              <SecondaryActionButton text={SecondayText} />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

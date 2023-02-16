@@ -6,8 +6,7 @@ export const navItems = [
   "Charging",
   "Support",
   "Shop",
-  "Account",
-  "Menu",
+  "Account"
 ];
 
 export const mobItems = [

@@ -8,6 +8,8 @@ module.exports = {
         models: "url('@/assets/Model-s.jpg')",
         modelx: "url('@/assets/Model-x.jpg')",
         solarPanel: "url('@/assets/solar-panel.jpg')",
+        housePanel: "url('@/assets/house-panel.jpeg')",
+        accessory: "url('@/assets/accessory.jpg')",
       },
       colors: {
         "primary-100": "#3E4045",
@@ -20,7 +22,7 @@ module.exports = {
         montserrat: ["Montserrat", "sans-serif"],
       },
       fontWeight: {
-        semimedium: 590,
+        semimedium: 650,
       },
     },
     screens: {

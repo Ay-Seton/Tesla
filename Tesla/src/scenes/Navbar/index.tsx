@@ -30,6 +30,11 @@ const Navbar = (prop: Props) => {
               {navItems.map((item) => {
                 return <Link key={item} title={item} />; //generate the navMenu items
               })}
+              <Menu
+                isMenuToggled={isMenuToggled}
+                setIsMenuToggled={setIsMenuToggled} //ToggleMenu
+                title="Menu"
+              />
             </div>
           ) : (
             <Menu
@@ -43,14 +48,14 @@ const Navbar = (prop: Props) => {
 
       {/* MOBILE  */}
       {isMenuToggled && (
-        <div className="fixed top-0 right-0 z-40 h-full overflow-y-scroll w-[300px] bg-white pb-3">
+        <div className="fixed top-0 right-0 z-40 h-full overflow-y-scroll w-[300px] bg-white pb-3 border-l-2">
           <div className="flex justify-end p-5">
             <button
               onClick={() => {
                 setIsMenuToggled(!isMenuToggled);
               }}
             >
-              <XMarkIcon className="h-8 w-8 p-1 hover:rounded-md hover:bg-gray-200" />
+              <XMarkIcon className="h-8 w-8 p-1 hover:bg-gray-100 hover:rounded-md" />
             </button>
           </div>
           <div className="flex flex-col text-sm font-semimedium mx-5">
