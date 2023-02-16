@@ -6,7 +6,7 @@ type Props = {};
 const Home = (props: Props) => {
   const scrollRef = useRef<HTMLElement>(null);
   // const myRef = useRef<HTMLDivElement | null>(null);
-  const select = document.getElementsByTagName("div");
+  const select = document.getElementsByTagName("div") as HTMLCollection;
   const [backgroundColor, setBackgroundColor] = useState<string>("");
   const [text, setText] = useState<string>("");
 
@@ -15,9 +15,10 @@ const Home = (props: Props) => {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
-      const entry_2 = entries[1];
-      const entry_3 = entries[2];
-      const entry_4 = entries[3];
+      // const entry_2 = entries[1]; 
+      // console.log(entry); 
+      // const entry_3 = entries[2];
+      // const entry_4 = entries[3];
 
       if (entry.isIntersecting) {
         setBackgroundColor("bg-white");
@@ -36,7 +37,12 @@ const Home = (props: Props) => {
         setText("Custom Order");
       }
     });
-    observer.observe(select[0]);
+    // (select:HTMLElement) => select)
+
+    for(let i = 0; i < select.length; i++) {
+      console.log(select.length)
+      observer.observe(select[i])
+    }
   }, []);
 
   console.log(text);
